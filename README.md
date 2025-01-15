@@ -19,27 +19,27 @@ scikit-learn: PCA and data preprocessing
 
 # Scripts Introduction
 Step01_DynamicTrendAnalysis.py
-Purpose: Analyzes trends in food affordability ratios over time and across racial/ethnic groups.
+Purpose: Analyze trends in food affordability ratios over time and across racial/ethnic groups.
 Output: Line plots and grouped bar charts showing trends in affordability ratios.
 
-Step02_RaceIncomeAnalysis.py
+Step02_AnalysisOfIncomeByRace.py
 Purpose: Explores the relationship between race, income, and affordability.
 Analysis:
 Median income comparison by race/ethnicity.
 Scatter plots with regression lines to show trends.
 Output: Grouped bar charts and scatter plots.
 
-Step03_MultiFactorPCA.py
+Step03_MultiIndexInteraction.py
 Purpose: Performs principal component analysis (PCA) to understand the contribution of key variables to food affordability.
 Analysis:
 PCA loadings for key variables like income, family size, and costs.
 Pairwise regression analysis between variables and affordability ratio.
 Output: Heatmaps for PCA loadings and regression scatter plots.
 
-Step04_CostIncomeAnalysis.py
+Step04_FoodCost&Income.py
 Purpose: Visualizes food affordability ratios by county in California.
 Analysis:
-Geographic heatmaps showing regional disparities in affordability.
+Geographic heat maps showing regional disparities in affordability.
 Output: Heatmaps based on GeoJSON data.
 
 Step05_GeographicMap.py
