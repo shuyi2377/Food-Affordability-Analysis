@@ -17,9 +17,10 @@ main_data = data.parse('Food_afford_cdp_co_region_ca')  # Parse the relevant she
 
 # Filter relevant data for counties
 geo_data = main_data[['county_name', 'affordability_ratio']].dropna()
+project_root = os.getcwd() 
+geojson_folder = os.path.join(project_root, 'geo_json')  
+geojson_path = os.path.join(geojson_folder, 'california_counties.geojson')  
 
-# Load GeoJSON for California Counties
-geojson_path = '/Users/sophiechang/Desktop/Food Affordability Analysis/california_counties.geojson'  # Replace with your GeoJSON file path
 with open(geojson_path, 'r') as f:
     ca_counties = json.load(f)
 
