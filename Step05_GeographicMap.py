@@ -6,25 +6,33 @@ from matplotlib.colors import Normalize
 from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
 
-# Load the dataset
+# Define the folder containing the dataset and the Excel file name
+# os.path.join ensures cross-platform compatibility for path creation
+
 data_folder = os.path.join(os.getcwd(), 'data')  # Path to the 'data' folder
 file_name = 'food_afford_data.xls'  # Name of the Excel file
 file_path = os.path.join(data_folder, file_name)
 
 # Load the Excel file
 data = pd.ExcelFile(file_path)
+
+# Parse the specific sheet containing food affordability data by county
 main_data = data.parse('Food_afford_cdp_co_region_ca')  # Parse the relevant sheet
 
-# Filter relevant data for counties
+# Select relevant columns: 'county_name' and 'affordability_ratio'
+# Drop rows with missing values to ensure data integrity
 geo_data = main_data[['county_name', 'affordability_ratio']].dropna()
+
+# Set up relative paths for the GeoJSON file containing California county geometries
 project_root = os.getcwd() 
 geojson_folder = os.path.join(project_root, 'geo_json')  
 geojson_path = os.path.join(geojson_folder, 'california_counties.geojson')  
 
 with open(geojson_path, 'r') as f:
     ca_counties = json.load(f)
-
-# Match GeoJSON counties with affordability data
+    
+# Create a dictionary to map each county's name to its affordability ratio
+# This ensures easy lookup when matching geographic data with affordability ratios
 county_affordability = {
     row['county_name']: row['affordability_ratio']
     for _, row in geo_data.iterrows()
@@ -34,6 +42,7 @@ county_affordability = {
 fig, ax = plt.subplots(figsize=(15, 10))
 
 # Normalize affordability_ratio for coloring
+# Normalize maps values to a range between 0 and 1 based on min and max values
 norm = Normalize(vmin=min(county_affordability.values()), vmax=max(county_affordability.values()))
 cmap = plt.cm.YlOrRd  # Color map (yellow to red)
 
