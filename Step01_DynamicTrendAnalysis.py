@@ -22,7 +22,7 @@ main_data = data.parse('Food_afford_cdp_co_region_ca')
 # Selecting 'reportyear', 'race_eth_name', and 'affordability_ratio'
 trend_data = main_data[['reportyear', 'race_eth_name', 'affordability_ratio']].copy()
 
-# Step 6: Focus on a single year for analysis (e.g., "2006-2010")
+# Focus on a single year for analysis (e.g., "2006-2010")
 # Filter the dataset to include only the desired year
 single_year_data = trend_data[trend_data['reportyear'] == "2006-2010"]
 
