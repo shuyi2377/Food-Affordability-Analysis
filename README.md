@@ -12,6 +12,7 @@ CA_RR_Affordability: Regional ratio of food affordability relative to state aver
 county_name: County-level data for geographic mapping.
 
 # Key Libraries:
+xlrd: for reading Excel files in `.xls` format
 pandas: Data manipulation
 matplotlib: Data visualization
 seaborn: Advanced data visualization
